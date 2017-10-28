@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div>
+    <acme-navbar></acme-navbar>
+  </div>
+
+
+  <div class="jumbotron text-center">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-success">Global holidays: {{conf.holidays}}</li>
+      <li class="list-group-item list-group-item-info">Week holidays: {{conf.daysInWeek}}</li>
+      <li class="list-group-item list-group-item-warning">Max in month: {{conf.max}}</li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <input class="form-control" type="date" id="exampleInput" name="input" ng-model="conf.newHoliday"
+        placeholder="yyyy-MM-dd" min="2017-01-01" max="2017-12-31" required />
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-success btn-block" ng-click="conf.addNewHoliday()">Add new holiday</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3"> Maximum free days in month: </span>
+        <input ng-model="conf.max" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-success btn-block" ng-click="conf.changeMax()">Update max value</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">Week: </span>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-success btn-block" ng-click="main.addRandomUser()">Add </button>
+    </div>
+  </div>
+</div>

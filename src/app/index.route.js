@@ -7,11 +7,17 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'MainController',
       controllerAs: 'main'
     })
-    .state('111', {
-      url: '/111',
-      templateUrl: 'app/components/main.html',
-      controller: 'MainController',
-      controllerAs: 'main'
+    .state('statistics', {
+      url: '/statistics',
+      templateUrl: 'app/components/statistics/statistics.html',
+      controller: 'StatisticsController',
+      controllerAs: 'stat'
+    })
+    .state('configuration', {
+      url: '/configuration',
+      templateUrl: 'app/components/configuration/configuration.html',
+      controller: 'ConfigController',
+      controllerAs: 'conf'
     });
 
   $urlRouterProvider.otherwise('/');

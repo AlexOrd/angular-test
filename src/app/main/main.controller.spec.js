@@ -4,7 +4,7 @@ describe('controllers', () => {
   beforeEach(angular.mock.module('angular'));
 
   beforeEach(inject(($controller, webDevTec, toastr) => {
-    spyOn(webDevTec, 'getTec').and.returnValue([{}, {}, {}, {}, {}]);
+    spyOn(webDevTec, 'getUsers').and.returnValue([{}, {}, {}, {}, {}]);
     spyOn(toastr, 'info').and.callThrough();
 
     vm = $controller('MainController');

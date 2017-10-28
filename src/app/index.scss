@@ -3,7 +3,7 @@
  *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
  */
 $navbar-inverse-link-color: #5AADBB;
-$icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
+$icon-font-path: "../fonts/";
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
@@ -19,12 +19,24 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
   padding: 0.2em 0;
 }
 
+.calendar {
+  display:inline-block;
+  min-height:290px;
+  margin-left: 40px;
+}
+
 .thumbnail {
-  height: 200px;
+  height: 400px;
 
   img.pull-right {
     width: 50px;
   }
+}
+
+.partially button span {
+  background-color: orange;
+  border-radius: 32px;
+  color: black;
 }
 
 /**

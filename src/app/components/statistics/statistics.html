@@ -1,0 +1,16 @@
+<div class="container">
+
+  <div>
+    <acme-navbar></acme-navbar>
+  </div>
+
+  <div class="jumbotron text-center">
+    <p class="animated infinite" ng-class="main.classAnimation">
+      <button type="button" class="btn btn-lg btn-success" ng-click="main.addRandomUser()">Add new random user</button>
+    </p>
+  </div>
+
+  <canvas id="bar" class="chart chart-bar" chart-data="stat.data" chart-labels="stat.labels" chart-series="stat.series">
+  </canvas>
+
+</div>

@@ -1,20 +1,16 @@
 <nav class="navbar navbar-static-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Gulp Angular
+      <a class="navbar-brand" href="https://github.com/AlexOrd/angular-test">
+        <span class="glyphicon glyphicon-home"></span> AlexOrd (GitHub)
       </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#111">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right acme-navbar-text">
-        <li>Application was created {{ vm.relativeDate }}.</li>
+        <li ng-click="inUse = 1" data-ng-class="{'active': inUse == 1}"><a ng-href="#/">Users</a></li>
+        <li ng-click="inUse = 2" data-ng-class="{'active': inUse == 2}"><a ng-href="#statistics">Statistics</a></li>
+        <li ng-click="inUse = 3" data-ng-class="{'active': inUse == 3}"><a ng-href="#configuration">Configuration</a></li>
       </ul>
     </div>
   </div>
