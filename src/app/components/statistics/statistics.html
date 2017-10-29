@@ -5,12 +5,22 @@
   </div>
 
   <div class="jumbotron text-center">
-    <p class="animated infinite" ng-class="main.classAnimation">
-      <button type="button" class="btn btn-lg btn-success" ng-click="main.addRandomUser()">Add new random user</button>
-    </p>
+    <canvas id="bar" class="chart chart-bar" chart-options="stat.options" chart-data="stat.globalData" chart-labels="stat.globalLabels" chart-series="stat.globalSeries">
+    </canvas>
   </div>
 
-  <canvas id="bar" class="chart chart-bar" chart-data="stat.data" chart-labels="stat.labels" chart-series="stat.series">
-  </canvas>
+  <div class="row">
+    <div class="col-sm-6 col-md-6" ng-repeat="iUser in stat.usersList | orderBy:'rank'">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{ iUser.name }} {{ iUser.surname }}</h3>
+          <p>{{ iUser.addDate | date:'dd-MM-yyyy' }} / {{ iUser.delDate | date:'dd-MM-yyyy' }}</p>
+          <span class="label label-danger" ng-show="iUser.isFired">Fired</span>
+        </div>
+        <canvas class="chart chart-bar" chart-data="iUser.data" chart-labels="iUser.labels" chart-series="stat.userSeries">
+        </canvas>
+      </div>
+    </div>
+  </div>
 
 </div>

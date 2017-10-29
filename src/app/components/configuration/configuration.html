@@ -15,7 +15,7 @@
 
   <div class="row">
     <div class="col-md-6">
-      <input class="form-control" type="date" id="exampleInput" name="input" ng-model="conf.newHoliday"
+      <input class="form-control" type="date" name="input" ng-model="conf.newHoliday"
         placeholder="yyyy-MM-dd" min="2017-01-01" max="2017-12-31" required />
     </div>
     <div class="col-md-6">
@@ -25,9 +25,19 @@
   <br>
   <div class="row">
     <div class="col-md-6">
+      <input class="form-control" type="date" name="input" ng-model="conf.minRandomDate"
+             placeholder="yyyy-MM-dd" min="2010-01-01" max="2017-12-31" required />
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-success btn-block" ng-click="conf.addRandomDate()">Add new minimal random Date</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon3"> Maximum free days in month: </span>
-        <input ng-model="conf.max" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        <input type="number" min="1" max="15" ng-model="conf.newMax" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
       </div>
     </div>
     <div class="col-md-6">
@@ -39,11 +49,11 @@
     <div class="col-md-6">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon3">Week: </span>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" disabled>
       </div>
     </div>
     <div class="col-md-6">
-      <button type="button" class="btn btn-success btn-block" ng-click="main.addRandomUser()">Add </button>
+      <button type="button" class="btn btn-success btn-block" ng-click="main.addRandomUser()" disabled>Add </button>
     </div>
   </div>
 </div>

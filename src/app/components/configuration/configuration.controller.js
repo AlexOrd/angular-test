@@ -10,7 +10,10 @@ export class ConfigController {
     this.daysInWeek = '';
     this.holidays = '';
     this.max = '';
+    this.newMax = '';
     this.newHoliday = '';
+    this.minRandomDate ='';
+    this.minRandomDate = '';
 
     this.update();
   }
@@ -36,8 +39,19 @@ export class ConfigController {
     }
   }
 
+  addRandomDate() {
+    if (this.minRandomDate) {
+      const dateValue = `${this.minRandomDate.getMonth() + 1}-${this.minRandomDate.getDate()}-${this.minRandomDate.getFullYear()}`;
+      this.configService.setConfig(this.max, null, dateValue);
+      this.showToastr('info', 'Minimal random date updated');
+      this.update();
+    } else {
+      this.showToastr('danger', 'Select date');
+    }
+  }
+
   changeMax() {
-      this.configService.setConfig(this.max);
+      this.configService.setConfig(this.newMax);
       this.update();
       this.showToastr('info', 'Max value updated');
   }

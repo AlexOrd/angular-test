@@ -6,7 +6,7 @@ export class UsersService {
         'id': '1',
         'name': 'Ivan',
         'surname': 'Ivanov',
-        'addDate': 'Wed Jan 01 2014',
+        'addDate': 'Sun Jan 01 2017',
         'delDate': 'Sun Oct 01 2017',
         'freeDays': ['Sun Oct 29 2017'],
         'isFired': 'false'
@@ -15,7 +15,7 @@ export class UsersService {
         'id': '2',
         'name': 'Segey',
         'surname': 'Sergeev',
-        'addDate': 'Wed Jan 01 2014',
+        'addDate': 'Sun Jan 01 2017',
         'delDate': 'Sun Oct 01 2017',
         'freeDays': ['Sun Oct 29 2017'],
         'isFired ': 'false'
@@ -24,7 +24,7 @@ export class UsersService {
         'id': '3',
         'name': 'Mikhail',
         'surname': 'Michailov',
-        'addDate': 'Wed Jan 01 2014',
+        'addDate': 'Sun Jan 01 2017',
         'delDate': 'Sun Oct 01 2017',
         'freeDays': ['Sun Oct 29 2017', 'Wed Oct 25 2017'],
         'isFired ': 'false'
@@ -33,7 +33,7 @@ export class UsersService {
         'id': '4',
         'name': 'Gleb',
         'surname': 'Glebov',
-        'addDate': 'Wed Jan 01 2014',
+        'addDate': 'Fri Jan 01 2016',
         'delDate': 'Sun Oct 01 2017',
         'freeDays': ['Sun Oct 29 2017', 'Wed Oct 25 2017'],
         'isFired ': 'false'

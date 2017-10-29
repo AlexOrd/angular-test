@@ -2,7 +2,8 @@ export class MainController {
   constructor ($timeout, users, config, toastr) {
     'ngInject';
 
-    this.config ={};
+    this.MIN_DATE = '';
+    this.config = {};
     this.usersList = [];
     this.classAnimation = '';
     this.toastr = toastr;
@@ -13,7 +14,7 @@ export class MainController {
   activate($timeout, users, config) {
     this.getUsers(users);
     this.config = config.getConfig();
-
+    this.MIN_DATE = this.config.minRandomDate;
     $timeout(() => {
       this.classAnimation = 'pulse';
     }, 2000);
@@ -67,7 +68,7 @@ export class MainController {
       user.calendarOptions = {
         customClass: addFree(user),
         dateDisabled: addFree(user),
-        minDate: new Date('01-01-2010'),
+        minDate: new Date(this.MIN_DATE),
         showWeeks: false
       };
     });
@@ -82,19 +83,25 @@ export class MainController {
     const randDate = (str, end) => new Date(str.getTime() + Math.random() * (end.getTime() - str.getTime()));
 
     const isFired = Math.random() >= 0.5;
-    const addDate = randDate(new Date(2012, 0, 1), new Date());
+    const addDate = randDate(new Date(this.MIN_DATE), new Date());
     const delDate = randDate(addDate, new Date());
-    function getRandomArbitrary(min, max) {
-      return Math.random() * max;
-    }
+
 
     const freeDays = new Array(Math.floor(Math.random() * 50)).fill('');
+    const clearFreeDays = freeDays.map(_ => {
+      let date;
+      do {
+        date = randDate(addDate, isFired ? delDate : new Date()).toDateString();
+      } while (this.config.holidaysPerWeek.find(d => d == new Date(date).getDay()));
+      return date
+    });
+
     const newUser = {
       'name': genSymbols(6),
       'surname': genSymbols(8),
       'addDate': addDate.toDateString(),
       'delDate': isFired ? delDate.toDateString() : '',
-      'freeDays': freeDays.map(_ => randDate(addDate, isFired ? delDate : new Date()).toDateString()),
+      'freeDays': clearFreeDays,
       'isFired' : isFired
     };
     this.usersModel.addUser(newUser);
