@@ -13,7 +13,7 @@ export class MainController {
 
   activate($timeout, users, config) {
     this.getUsers(users);
-    this.config = config.getConfig();
+    this.config = config.findAll();
     this.MIN_DATE = this.config.minRandomDate;
     $timeout(() => {
       this.classAnimation = 'pulse';
@@ -42,7 +42,7 @@ export class MainController {
   }
 
   getUsers(users) {
-    this.usersList = users.getUsers();
+    this.usersList = users.findAll();
 
     const addFree = (user) => {
       return (data) => {
@@ -112,6 +112,5 @@ export class MainController {
 
   showToastr(type, info) {
     this.toastr[type](info);
-    this.classAnimation = '';
   }
 }

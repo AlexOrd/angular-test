@@ -27,7 +27,7 @@ export class StatisticsController {
   }
 
   activate(config) {
-    this.config = config.getConfig();
+    this.config = config.findAll();
     this.GLOB_START = this.config.statStartDate;
     this.initGlobalStat();
     this.getUsers();
@@ -48,7 +48,7 @@ export class StatisticsController {
   }
 
   getUsers() {
-    this.usersList = this.usersService.getUsers();
+    this.usersList = this.usersService.findAll();
 
     angular.forEach(this.usersList, (user) => {
       user.labels = [];

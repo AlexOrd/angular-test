@@ -41,7 +41,7 @@ export class UsersService {
     ];
   }
 
-  getUsers() {
+  findAll() {
     if (!localStorage.getItem('users')) {
       localStorage.setItem('users', angular.toJson(this.defaultUsers))
     }

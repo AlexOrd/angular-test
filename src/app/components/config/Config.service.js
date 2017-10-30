@@ -10,18 +10,22 @@ export class ConfigService {
     };
   }
 
-  getConfig() {
+  findAll() {
     if (!localStorage.getItem('config')) {
       localStorage.setItem('config', angular.toJson(this.defaultConfig))
     }
     return angular.fromJson(localStorage.getItem('config'));
   }
 
-  setConfig(max, holiday = null, randomLimit = null) {
-    const oldConfig = angular.fromJson(localStorage.getItem('config'));
-    if (holiday) oldConfig.holidays.push(holiday);
-    if (randomLimit) oldConfig.minRandomDate = randomLimit;
-    oldConfig.freePerMonth = max;
-    localStorage.setItem('config', angular.toJson(oldConfig));
+  addHoliday(value) {
+    const config = angular.fromJson(localStorage.getItem('config'));
+    config.holidays.push(value);
+    localStorage.setItem('config', angular.toJson(config));
+  }
+
+  updateOne(name, value) {
+    const config = angular.fromJson(localStorage.getItem('config'));
+    config[name] = value;
+    localStorage.setItem('config', angular.toJson(config));
   }
 }

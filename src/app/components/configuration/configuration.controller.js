@@ -5,7 +5,6 @@ export class ConfigController {
     this.dayList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     this.monthList =['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.config ={};
-    this.classAnimation = '';
     this.toastr = toastr;
     this.daysInWeek = '';
     this.holidays = '';
@@ -19,7 +18,7 @@ export class ConfigController {
   }
 
   update() {
-    this.config = this.configService.getConfig();
+    this.config = this.configService.findAll();
     this.daysInWeek = this.config.holidaysPerWeek.map(i => this.dayList[i]).join(', ');
     this.holidays = this.config.holidays.map(i => {
       const date = i.split('-');
@@ -30,8 +29,8 @@ export class ConfigController {
 
   addNewHoliday() {
     if (this.newHoliday) {
-      const dateValue = `${this.newHoliday.getMonth() + 1}-${this.newHoliday.getDate()}`;
-      this.configService.setConfig(this.max, dateValue);
+      const value = `${this.newHoliday.getMonth() + 1}-${this.newHoliday.getDate()}`;
+      this.configService.addHoliday(value);
       this.showToastr('info', 'Holidays updated');
       this.update();
     } else {
@@ -41,9 +40,9 @@ export class ConfigController {
 
   addRandomDate() {
     if (this.minRandomDate) {
-      const dateValue = `${this.minRandomDate.getMonth() + 1}-${this.minRandomDate.getDate()}-${this.minRandomDate.getFullYear()}`;
-      this.configService.setConfig(this.max, null, dateValue);
-      this.showToastr('info', 'Minimal random date updated');
+      const value = `${this.minRandomDate.getMonth() + 1}-${this.minRandomDate.getDate()}-${this.minRandomDate.getFullYear()}`;
+      this.configService.updateOne('minRandomDate', value);
+      this.showToastr('info', `Minimal random date is ${value}`);
       this.update();
     } else {
       this.showToastr('danger', 'Select date');
@@ -51,13 +50,12 @@ export class ConfigController {
   }
 
   changeMax() {
-      this.configService.setConfig(this.newMax);
+      this.configService.updateOne('freePerMonth', this.newMax);
       this.update();
-      this.showToastr('info', 'Max value updated');
+      this.showToastr('info', `Max value is ${this.newMax}`);
   }
 
   showToastr(type, info) {
     this.toastr[type](info);
-    this.classAnimation = '';
   }
 }
